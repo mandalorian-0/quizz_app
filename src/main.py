@@ -1,9 +1,12 @@
 from question_model import Question
 from data import question_data
+from quiz_brain import QuizBrain
 
 question_bank = []
 
-for _, (question, answer) in enumerate(question_data):
-    question_bank.append(Question(text=question, answer=answer))
+for question in question_data:
+    question_bank.append(Question(question["text"], question["answer"]))
 
-print(question_bank[0])
+question = QuizBrain(question_bank)
+
+question.next_question()
